@@ -15,7 +15,7 @@ def registerPage(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         # profile_form = ProfileForm(request.POST, instance=request.user.profile)
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user_form.save()
             # profile_form.save()
             messages.success(request, _(
@@ -30,3 +30,19 @@ def registerPage(request):
         'user_form': user_form,
         # 'profile_form': profile_form
     })
+
+
+class LoanUpdateView(UpdateView):
+    template_name = 'loans/LoanInformation_update.html'
+    form_class = AddLoans
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(LoanInformation, id=id_)
+
+# login Page
+
+# logout function
+
+# todo/ needed venders remaining list
+# vender list - small cards of each vender and a pic/address

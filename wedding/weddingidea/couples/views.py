@@ -13,3 +13,4 @@ def landing_page(request):
 
 # todo/ needed venders remaining list
 # vender list - small cards of each vender and a pic/address
+# create search tool to find venders

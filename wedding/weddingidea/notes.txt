@@ -1,0 +1,6 @@
+This is a place to put learning experiences down.
+
+Templating: if you want an over-arching template for apps to use, add a folder named 'template' to the project directory (aka add it next to manage.py).
+You can refernce this: {% extends 'main.html' %} where main.html is the html file you want to use
+If you want to use a templating extension within an app, you can create a file to be extended (appmain.html in this case). If you want to refernce it other templates
+then you must reference it as: {% extends 'appname/appmain.html' %} where appname is the name of the app you created.

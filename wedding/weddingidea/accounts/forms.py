@@ -13,11 +13,8 @@ class CustomUserCreationForm(forms.Form):
         attrs={'class': 'form-control'}))
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(
         attrs={'class': 'form-control'}))
-<<<<<<< HEAD
-=======
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
->>>>>>> a1cc382631312f64c6dd56057d48ea35206c7fa9
 
     class meta: 
         widgets = {
@@ -67,22 +64,9 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-<<<<<<< HEAD
         fields = ['name_of_event', 'date_of_event']
 
         widgets = {
             'name_of_event': forms.TextInput(attrs={'class': 'form-control'}),
             'date_of_event': forms.DateTimeInput(attrs={'class': 'form-control'}),
         }
-=======
-        fields = ['person2_first_name', 'person2_last_name', 'date_of_event']
-
-    class meta: 
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'person2_last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'date_of_event': forms.DateTimeInput(attrs={'class': 'form-control'}),
-
-        }
-
->>>>>>> a1cc382631312f64c6dd56057d48ea35206c7fa9

@@ -7,8 +7,13 @@
 
         <form method="post">
             {% csrf_token %}
+<<<<<<< HEAD
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+=======
             {{ user_form.as_table }}
             {{ profile_form.as_table }}
+>>>>>>> bda3eed06045d724e6ee441676371eb0c4d0e9ad
             <button class="btn btn-secondary" type="submit">Save changes</button>
         </form>
 

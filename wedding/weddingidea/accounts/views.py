@@ -6,16 +6,17 @@ from .forms import ProfileForm, CustomUserCreationForm
 
 def update_profile(request):
     if request.method == 'POST':
+        profile = Profile.objects.get(user=request.user)
         user_form = CustomUserCreationForm(request.POST)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        profile_form = ProfileForm(request.POST, instance=profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save() 
             return redirect('registration:registration')
     else:
         user_form = CustomUserCreationForm()
-        profile_form = ProfileForm(request.POST)
-        print(profile_form)
+        profile = Profile.objects.get(user=request.user)
+        profile_form = ProfileForm(request.POST, instance=profile)
     return render(request, 'registration/registration.html', {
         'user_form': user_form,
         'profile_form': profile_form

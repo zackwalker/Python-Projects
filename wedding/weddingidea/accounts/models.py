@@ -8,10 +8,10 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField()
-    person2_first_name = models.CharField(max_length=50)
-    person2_last_name = models.CharField(max_length=50)
-    date_of_event = models.DateTimeField()
+    email = models.EmailField(null=True)
+    person2_first_name = models.CharField(max_length=50, null=True)
+    person2_last_name = models.CharField(max_length=50, null=True)
+    date_of_event = models.DateTimeField(null=True)
 
 
 @receiver(post_save, sender=User)
@@ -20,7 +20,7 @@ def create_user_profile(sender, instance, created, **kwargs):
         Profile.objects.create(user=instance)
 
 
-post_save.connect(create_user_profile, sender=User)
+# post_save.connect(create_user_profile, sender=User)
 
 
 @receiver(post_save, sender=User)

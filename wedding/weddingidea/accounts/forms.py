@@ -60,11 +60,10 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['person2_first_name', 'person2_last_name', 'date_of_event','email']
+        fields = ['person2_first_name', 'person2_last_name', 'date_of_event']
 
         widgets = {
             'person2_first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'person2_last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'date_of_event': forms.DateTimeInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
         }

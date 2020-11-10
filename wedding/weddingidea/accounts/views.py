@@ -7,7 +7,11 @@ from .forms import ProfileForm, CustomUserCreationForm
 def update_profile(request):
     if request.method == 'POST':
         user_form = CustomUserCreationForm(request.POST)
+<<<<<<< HEAD
         profile_form = ProfileForm(request.POST)
+=======
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+>>>>>>> bda3eed06045d724e6ee441676371eb0c4d0e9ad
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save() 
@@ -20,4 +24,7 @@ def update_profile(request):
         'user_form': user_form,
         'profile_form': profile_form
     })
+<<<<<<< HEAD
 
+=======
+>>>>>>> bda3eed06045d724e6ee441676371eb0c4d0e9ad

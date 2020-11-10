@@ -8,6 +8,7 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField()
     person2_first_name = models.CharField(max_length=50)
     person2_last_name = models.CharField(max_length=50)
     date_of_event = models.DateTimeField()

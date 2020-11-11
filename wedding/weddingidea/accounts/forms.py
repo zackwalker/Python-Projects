@@ -16,14 +16,6 @@ class CustomUserCreationForm(forms.Form):
     password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
-    class meta: 
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'person2_last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            # 'date_of_event': forms.DateTimeInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-        }
-
     #ensures the username doesnt already exist
     def clean_username(self):
         username = self.cleaned_data['username'].lower()

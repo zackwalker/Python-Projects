@@ -4,3 +4,8 @@ Templating: if you want an over-arching template for apps to use, add a folder n
 You can refernce this: {% extends 'main.html' %} where main.html is the html file you want to use
 If you want to use a templating extension within an app, you can create a file to be extended (appmain.html in this case). If you want to refernce it other templates
 then you must reference it as: {% extends 'appname/appmain.html' %} where appname is the name of the app you created.
+
+In order to extend a Profile of a user, I was first using a OneToOne model field type when really it should have been a ForeignKey type. I kept receiving an
+error: UNIQUE constraint failed: accounts_profile.user_id. This was because the account was still being made behind the scenes, however it wasnt able
+to uniquely relate a profile to that user. So I had to add 'profile = get_object_or_404(Profile, user=request.user)' to the first line of my view so I could
+uniquely ID the user and therefore the profile.

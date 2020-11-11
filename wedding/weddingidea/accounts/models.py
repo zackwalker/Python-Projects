@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name_of_event = models.CharField(max_length=50, null=True)
     date_of_event = models.DateTimeField(null=True)
     person2_first_name = models.CharField(max_length=50, null=True)
@@ -20,6 +20,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 # post_save.connect(create_user_profile, sender=User)
 
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+@receiver(post_save,sender=User)
+def save_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    else:
+        instance.profile.save()

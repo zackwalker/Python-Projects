@@ -7,9 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 def landing_page(request):
     return render(request, 'couples/landPage.html')
 
-# login Page
-
-# logout function
+#navbar: vendor list, upcoming events, upcoming actions
 
 # todo/ needed venders remaining list
 # vender list - small cards of each vender and a pic/address

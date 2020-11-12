@@ -13,8 +13,6 @@ class CustomUserCreationForm(forms.Form):
         attrs={'class': 'form-control'}))
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(
         attrs={'class': 'form-control'}))
-    password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     #ensures the username doesnt already exist
     def clean_username(self):
@@ -47,18 +45,29 @@ class CustomUserCreationForm(forms.Form):
         user = User.objects.create_user(
             self.cleaned_data['username'],
             self.cleaned_data['email'],
-            self.cleaned_data['password1']
+            self.cleaned_data['password1'],
         )
         return user
 
 
 class ProfileForm(forms.ModelForm):
 
+    category_choices = [
+        ('couple', 'Couple'),
+        ('vendor', 'Vendor'),
+        ('wedding_planner', 'Wedding Planner')
+    ]
+
+    wedding_category = forms.ChoiceField(
+        choices=category_choices, required=True)
+
     class Meta:
         model = Profile
         fields = ['name_of_event', 'date_of_event']
 
+
         widgets = {
             'name_of_event': forms.TextInput(attrs={'class': 'form-control'}),
             'date_of_event': forms.DateTimeInput(attrs={'class': 'form-control'}),
+            'wedding_category': forms.Select(attrs={'class': 'form-control'}),
         }

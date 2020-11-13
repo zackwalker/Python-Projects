@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'weddingidea.urls'
+AUTH_USER_MODEL = 'accounts.Profile'
 
 TEMPLATES = [
     {

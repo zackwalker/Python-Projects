@@ -47,7 +47,7 @@ class Profile(AbstractBaseUser):
     date_joined      = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login       = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     is_admin         = models.BooleanField(default=False)
-    is_active        = models.BooleanField(default=False)
+    is_active        = models.BooleanField(default=True)
     is_staff         = models.BooleanField(default=False)
     is_superuser     = models.BooleanField(default=False)
     name_of_event = models.CharField(max_length=50)
@@ -68,16 +68,3 @@ class Profile(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
-
-
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-
-# @receiver(post_save,sender=User)
-# def save_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-#     # else:
-#     #     instance.profile.save()

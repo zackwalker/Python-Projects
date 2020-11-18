@@ -9,3 +9,7 @@ In order to extend a Profile of a user, I was first using a OneToOne model field
 error: UNIQUE constraint failed: accounts_profile.user_id. This was because the account was still being made behind the scenes, however it wasnt able
 to uniquely relate a profile to that user. So I had to add 'profile = get_object_or_404(Profile, user=request.user)' to the first line of my view so I could
 uniquely ID the user and therefore the profile.
+
+Could not extend user profile to save my life as mentioned above so I wound up creating a user model from scratch with the exact fields I needed.
+You must set a variable in the settings to tell django you want to look at a different model than User. This gives free reign to do any custom model/forms you may need.
+You have to set up an accountManager object variable and overwrite the two methods that are found in accounts/model.py

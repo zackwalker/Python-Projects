@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 def landing_page(request):
     return render(request, 'couples/landPage.html')
 
+# create a list view of all vendor types
+
 #navbar: vendor list, upcoming events, upcoming actions
 
 # todo/ needed venders remaining list
